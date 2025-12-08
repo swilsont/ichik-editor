@@ -103,6 +103,8 @@ const spanishConfig = {
                 titleUrl: 'URL de Imagen',
                 titleAlt: 'Descripción (Alt Text, opcional)',
                 titleWidth: 'Ancho (Opcional)',
+                placeholderAlt: 'Ej: Logo de la Compañía',
+                placeholderWidth: 'Ej: 300px o 100%',
                 insert: 'Insertar',
                 update: 'Actualizar',
                 cancel: 'Cancelar'
