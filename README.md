@@ -18,6 +18,12 @@ A lightweight, secure, and dependency-free **WYSIWYG Editor** built with Vanilla
 - **Multi-Instance:** Support for multiple editors on the same page without conflicts.
 - **i18n Ready:** Fully configurable text labels for easy translation into any language.
 
+
+## ⌨️ Try it out!
+- [English DEMO](https://html-preview.github.io/?url=https://github.com/swilsont/ichik-editor/blob/main/demo.html)
+- [Spanish DEMO](https://html-preview.github.io/?url=https://github.com/swilsont/ichik-editor/blob/main/demo_es.html)
+
+
 ## 🚀 Installation
 Simply include the CSS and JS files in your project.
 
