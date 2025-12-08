@@ -63,14 +63,13 @@
                 alerts: {
                     httpsRequired: 'Por seguridad, use solo HTTPS.',
                     invalidProtocol: 'Protocolo no válido.'
-                },
-                initialContent: 'Escribe tu historia aquí...'
+                }
             }
         };
 
         const editor1 = new IchikEditor('editor-principal', spanishConfig);
 
-        editor1.setHTML('<p>Optionally, you <em>can</em> set <strong>initial HTML content</strong>...</p>');
+        editor1.setHTML('Escribe tu historia aquí...');
 
         function showCode(type) {
             if (type === 'md') document.getElementById('output').value = editor1.getMarkdown();
