@@ -111,8 +111,7 @@ const spanishConfig = {
         alerts: {
             httpsRequired: 'Por seguridad, use solo HTTPS.',
             invalidProtocol: 'Protocolo no válido.'
-        },
-        initialContent: 'Escribe tu historia aquí...'
+        }
     }
 };
 
