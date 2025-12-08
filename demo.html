@@ -16,7 +16,7 @@
     <h1>Ichik Editor Demo</h1>
 
     <div class="wrapper">
-        <div id="editor-principal"></div>
+        <div id="main-editor"></div>
         
         <button class="save-btn" onclick="showCode('md')">View Markdown</button>
         <button class="save-btn" onclick="showCode('html')">View HTML</button>
@@ -25,7 +25,7 @@
 
     <script src="ichik-editor-1.0.0.min.js"></script>
     <script>
-        const editor1 = new IchikEditor('editor-principal');
+        const editor1 = new IchikEditor('main-editor');
 
         editor1.setHTML('<p>Optionally, you <em>can</em> set <strong>initial HTML content</strong>...</p>');
 

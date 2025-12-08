@@ -37,10 +37,10 @@ const IchikEditor = (function() {
             ul: '• Bullet List',
             ol: '1. Numbered List',
             hr: '—',
-            link: 'Link',
+            link: '🔗 Link',
             image: '🖼️ Image',
-            emoji: '😀 Emojis',
-            clear: 'Clear'
+            emoji: '😀 Emoji',
+            clear: 'Clear format'
         },
         popups: {
             link: {
