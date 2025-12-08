@@ -1,0 +1,187 @@
+/*
+   IchikEditor.css - (c) 2025 Sebastian Wilson T. https://github.com/swilsont/ichik-editor
+   Licensed under the MIT License.
+   WYSIWYG editor that converts HTML to Markdown securely, without dependencies and with i18n.
+*/
+
+/* --- MAIN CONTAINER ---
+   Uses a relative container to encapsulate the editor.
+   'overflow: hidden' ensures content respects the rounded corners.
+*/
+.ichik-editor-container {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Toolbar top, Editor bottom */
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+/* --- TOOLBAR --- */
+.ichik-toolbar {
+    background: #f4f4f4;
+    border-bottom: 1px solid #ccc;
+    padding: 8px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap; /* Allows buttons to wrap on small screens */
+    align-items: center;
+}
+
+/* --- BUTTONS --- */
+.ichik-toolbar button {
+    background: white;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-weight: 600;
+    min-width: 30px;
+    height: 32px; /* Fixed height to align with Selects */
+    transition: all 0.2s ease;
+    color: #333;
+}
+
+.ichik-toolbar button:hover {
+    background: #e0e0e0;
+}
+
+/* ACTIVE STATE: Applied via JS when cursor is inside a format (e.g., Bold) */
+.ichik-toolbar button.active {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* --- HEADINGS SELECTOR (Dropdown) --- */
+.ichik-toolbar select {
+    height: 32px;
+    padding: 0 8px;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+    background: white;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+}
+.ichik-toolbar select:hover { border-color: #999; }
+
+/* --- EDITING AREA --- */
+.ichik-editor {
+    min-height: 250px;
+    padding: 15px;
+    outline: none; /* Removes native browser blue focus outline */
+    overflow-y: auto;
+    line-height: 1.6;
+    color: #24292e;
+}
+
+/* Internal content styles */
+.ichik-editor p { margin-bottom: 1em; }
+.ichik-editor blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding-left: 10px;
+    color: #6a737d;
+    margin: 10px 0;
+}
+.ichik-editor code {
+    background-color: #f6f8fa;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: monospace;
+}
+.ichik-editor img {
+    max-width: 100%; /* Prevents large images from breaking layout */
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border-radius: 4px;
+}
+
+/* Horizontal Rule Style */
+.ichik-editor hr {
+    border: 0;
+    border-top: 2px solid #dfe2e5;
+    margin: 20px 0;
+}
+
+
+/* --- FLOATING ELEMENTS (Popups, Tooltips, Emojis) ---
+   Note: These elements are injected into the <body> to avoid z-index
+   or overflow:hidden issues with parent containers.
+*/
+
+/* Link Tooltip */
+.ichik-tooltip {
+    position: fixed;
+    background: #24292e;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    pointer-events: none; /* CRITICAL: Mouse passes through, allowing clicks underneath */
+    display: none;
+    z-index: 99999;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Shared base style for floating menus */
+.ichik-popup, .ichik-emoji-picker {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    border-radius: 6px;
+    z-index: 10000;
+    font-size: 13px;
+    color: #333;
+}
+
+/* Emoji Picker */
+.ichik-emoji-picker {
+    padding: 8px;
+    width: 310px;
+    /* GRID layout is activated via JS, here we define columns */
+    grid-template-columns: repeat(6, 1fr);
+    gap: 4px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.ichik-emoji-item {
+    cursor: pointer;
+    font-size: 22px;
+    text-align: center;
+    padding: 6px;
+    border-radius: 4px;
+    transition: background 0.1s;
+}
+.ichik-emoji-item:hover { background: #f0f0f0; transform: scale(1.1); }
+
+/* Forms (Link & Image) */
+.ichik-popup {
+    padding: 15px;
+    width: 280px;
+    flex-direction: column; /* Stacked inputs */
+    gap: 10px;
+}
+.ichik-popup label { font-weight: 600; margin-bottom: 4px; display: block; font-size: 12px; color: #555; }
+.ichik-popup input {
+    width: 100%; padding: 6px 8px; margin-bottom: 10px;
+    border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; outline: none;
+}
+.ichik-popup input:focus { border-color: #333; }
+
+.ichik-popup-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 5px; }
+
+.ichik-btn-save { background: #28a745; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: 600; }
+.ichik-btn-cancel { background: #f4f4f4; color: #333; border: 1px solid #ccc; padding: 6px 12px; border-radius: 4px; cursor: pointer; }
+.ichik-btn-save:hover { background: #218838; }
+.ichik-btn-cancel:hover { background: #e2e6ea; }

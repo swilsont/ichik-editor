@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ichik Editor Demo</title>
+    <link rel="stylesheet" href="ichik-editor-1.0.0.min.css">
+    <style>
+        body { padding: 20px; font-family: sans-serif; max-width: 900px; margin: 0 auto; }
+        .wrapper { margin-bottom: 40px; }
+        textarea { width: 100%; height: 80px; margin-top: 10px; font-family: monospace; }
+        button.save-btn { margin-top: 5px; cursor: pointer; padding: 5px 10px; }
+    </style>
+</head>
+<body>
+    <h1>Ichik Editor Demo</h1>
+
+    <div class="wrapper">
+        <div id="editor-principal"></div>
+        
+        <button class="save-btn" onclick="showCode('md')">View Markdown</button>
+        <button class="save-btn" onclick="showCode('html')">View HTML</button>
+        <textarea id="output" readonly></textarea>
+    </div>
+
+    <script src="ichik-editor-1.0.0.min.js"></script>
+    <script>
+        const editor1 = new IchikEditor('editor-principal');
+
+        editor1.setHTML('<p>Optionally, you <em>can</em> set <strong>initial HTML content</strong>...</p>');
+
+        function showCode(type) {
+            if (type === 'md') document.getElementById('output').value = editor1.getMarkdown();
+            else document.getElementById('output').value = editor1.getHTML();
+        }
+    </script>
+
+</body>
+</html>
